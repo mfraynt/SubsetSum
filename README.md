@@ -22,7 +22,7 @@ $ sum $ - target sum as an integer.
 
 ### Recursion 
 
-```Mermaid
+```mermaid
 graph LR
 Root("F(arr, n, sum)")
 Root --> A(Is sum = 0)
