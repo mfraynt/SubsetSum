@@ -16,9 +16,9 @@ Basically there are 2 main algorithms used for solution of the Subset sum proble
 >It is worth mentioning that we not only have to solve the SSP, but also need to return the subset itself. 
 
 Both algorithms have same input data:   
-$ arr $ - the array of integers;  
-$ n $ - size of the array;  
-$ sum $ - target sum as an integer.
+$arr$ - the array of integers;  
+$n$ - size of the array;  
+$sum$ - target sum as an integer.
 
 ### Recursion 
 
@@ -35,7 +35,7 @@ E --> Root
 F --> Root
 
 ```
-In order to return the subset, we have to record an element of $ arr $ echa time we decrease the $ sum $. VBA implementation is provided below.
+In order to return the subset, we have to record an element of $arr$ echa time we decrease the $sum$. VBA implementation is provided below.
 
 ```VB
 Function isThereSumRecursive(arr, n, sum) As Boolean
@@ -64,27 +64,25 @@ End Function
 
 Based on input data build the matrix $dp$ of size $ (n+1) \times (sum+1) $ as follows: 
  
-$ dp[i, 0] = True, i \in [0;...; n]; $ <br>
-$ dp[0, j] = False, j \in [0; ...; sum]; $  <br>
+$dp[i, 0] = True, i \in [0;...; n];$ <br>
+$dp[0, j] = False, j \in [0; ...; sum];$  <br>
 
-$ \begin{cases} 
+$$\begin{cases} 
 dp[i,j] = dp[i-1, j] \\
 j < arr(i-1)
-\end{cases}$
+\end{cases}$$
 
-$ \begin{cases} 
+$$\begin{cases} 
 dp[i,j] = (dp[i-1, j] \; \lor \; dp[i-1, j - arr(i-1)]) \\
 j \ge arr(i-1)
-\end{cases}$
+\end{cases}$$
 
 In order to return the subset, we have to walk through the $ dp $ matrix top-down and find $ dp[i,j] $ such as:  
 
-$
-\begin{cases} 
+$$\begin{cases} 
     dp[i,j] = True;\\
     dp[i-1,j] = False.
-\end{cases}
- $  
+\end{cases}$$
 
 VBA implementation is provided below.
 
