@@ -59,7 +59,7 @@ Function isThereSumRecursive(arr, n, sum) As Boolean
     isThereSumRecursive = isThereSumRecursive(arr, n - 1, sum) Or isThereSumRecursive(arr, n - 1, sum - arr(n - 1))
     
     ' Adding elements to subset
-    If isThereSumRecursive(arr, n - 1, sum - arr(n - 1)) Then
+    If Not (isThereSumRecursive(arr, n - 1, sum)) And isThereSumRecursive(arr, n - 1, sum - arr(n - 1)) Then
         If Not subset.Exists(n - 1) Then
             subset.Add n - 1, arr(n - 1)
         End If
