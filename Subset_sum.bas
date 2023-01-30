@@ -80,17 +80,21 @@ Sub SubsetSum(sum)
     dynamicComplexity = (n + 1) * (sum + 1)
     
     If recursiveComplexity > dynamicComplexity Then
+        t_0 = Timer ' Time the solution
         res = isThereSumDynamic(arr, n, sum)
+        t_1 = Timer ' End Timer
         SubsetSumForm.Label2.Caption = "Algorithm used: Dynamic programming."
     Else:
+        t_0 = Timer ' Time the solution
         res = isThereSumRecursive(arr, n, sum)
+        t_1 = Timer ' End Timer
         SubsetSumForm.Label2.Caption = "Algorithm used: Recursion."
     End If
     
     If res Then
-        MsgBox ("Subset found and will be selected.")
+        MsgBox (SubsetSumForm.Label2.Caption & vbNewLine & "Subset found and will be selected. " & vbNewLine & "Time used: " & (t_1 - t_0))
     Else
-        MsgBox ("Subset was not found")
+        MsgBox (SubsetSumForm.Label2.Caption & vbNewLine & "Subset was not found" & vbNewLine & "Time used: " & (t_1 - t_0))
     End If
     Unload SubsetSumForm
     
